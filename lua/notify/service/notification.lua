@@ -34,10 +34,10 @@ function Notification:new(id, message, level, opts, config)
   if type(title) == "string" then
     title = { title, vim.fn.strftime(config.time_formats().notification, time) }
   end
-  if vim.version.ge(vim.version(), {11, 0, 0}) then
     vim.validate('message', message, "table")
     vim.validate('level', level, "string")
     vim.validate('title', title, "table")
+  if vim.version.ge(vim.version(), { 0, 11, 0 }) then
   else
     vim.validate({
       message = { message, 'table' },
